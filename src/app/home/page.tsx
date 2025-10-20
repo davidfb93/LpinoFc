@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import Donaciones from '@/components/Donaciones';
+import OnboardingModal from '@/components/OnboardingModal';
 
 export default function HomePage() {
     const carouselRef = useRef<HTMLDivElement>(null);
@@ -174,7 +175,9 @@ export default function HomePage() {
 
 
     return (
-        <div className="w-full py-6 sm:py-8 md:py-12">
+        <>
+            <OnboardingModal />
+            <div className="w-full py-6 sm:py-8 md:py-12">
             <div className="max-w-7xl mx-auto px-2 sm:px-4">
                 {/* Carrusel */}
                 <div className="relative overflow-hidden">
@@ -246,5 +249,6 @@ export default function HomePage() {
                 }
             `}</style>
         </div>
+        </>
     );
 }
