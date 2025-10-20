@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@import "./tailwind.css";
+
+body {
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)),
+        url("/images/wallpaper.jpg");
+    background-position: 10%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+}
