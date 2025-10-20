@@ -24,7 +24,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <html lang="es" suppressHydrationWarning>
             <head>
-            <link rel="icon" href="/Lpino1.ico" type="image/x-icon" />
+            <link rel="icon" href="/favicon.ico" type="image/x-icon" />
             </head>
             <body className={`${fontMontserrat.variable} antialiased min-w-[320px] overflow-x-hidden`}>
             <HeaderSocialMedia/>
