@@ -25,7 +25,7 @@ export default function Donaciones() {
         <div className="mt-8 sm:mt-12 bg-green-100 rounded-2xl p-4 sm:p-6 md:p-8 text-center max-w-2xl mx-auto">
             <p className="text-gray-800 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8 px-2">
                 Hazte miembro de la comunidad, participa en nuestros eventos,
-                adquiere nuestros productos o apóyanos con tus donaciones....
+                adquiere nuestros productos o apóyanos con tus donaciones.
             </p>
 
             <div className="flex justify-center mb-4 sm:mb-6">
