@@ -55,7 +55,7 @@ export default function OnboardingModal() {
                 {/* Contenido */}
                 <div className="p-6 sm:p-8 text-center">
                     <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-3 sm:mb-4">
-                        ¡Bienvenido a LPINO ORG!
+                        ¡Bienvenido a LPINO FC!
                     </h2>
                     <p className="text-gray-600 mb-4 sm:mb-6 text-base sm:text-lg">
                         Para conocer más sobre este y nuestros proximos eventos por favor da clic en el botón "Ir a Eventos"
