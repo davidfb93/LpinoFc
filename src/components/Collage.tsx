@@ -17,6 +17,7 @@ export interface SlideImage {
 
 interface CollageProps {
   slides?: SlideImage[];
+  compact?: boolean;
 }
 
 export const slides = [
@@ -143,7 +144,7 @@ export const slidesGroupB = [
   }
 ];
 
-export default function Collage({ slides: customSlides }: CollageProps) {
+export default function Collage({ slides: customSlides, compact = false }: CollageProps) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   
@@ -159,7 +160,10 @@ export default function Collage({ slides: customSlides }: CollageProps) {
     ? "grid grid-cols-2 gap-2" 
     : "grid grid-cols-2 sm:grid-cols-3 gap-2 mb-8";
   
-  const imageClass = customSlides
+  // Tamaño de imagen: compact para modal de torneo, normal para otros usos
+  const imageClass = compact
+    ? "rounded-lg cursor-pointer object-cover w-full h-24 sm:h-28 hover:opacity-90 transition"
+    : customSlides
     ? "rounded-lg cursor-pointer object-cover w-full h-32 sm:h-40 hover:opacity-90 transition"
     : "rounded-lg cursor-pointer object-cover w-full h-40 sm:h-48 md:h-56 hover:opacity-90 transition";
 
