@@ -9,7 +9,18 @@ import 'yet-another-react-lightbox/styles.css';
 import 'yet-another-react-lightbox/plugins/thumbnails.css';
 import 'yet-another-react-lightbox/plugins/captions.css';
 
-const slides = [
+export interface SlideImage {
+  src: string;
+  alt: string;
+  title: string;
+}
+
+interface CollageProps {
+  slides?: SlideImage[];
+  compact?: boolean;
+}
+
+export const slides = [
   {
     src: '/images/memories/1.jpg',
     alt: 'Foto 1',
@@ -87,19 +98,84 @@ const slides = [
   },
 ];
 
-export default function Collage() {
+export const slidesGroupA = [
+  {
+    src: '/images/teams/Team1.jpg',
+    alt: 'Foto 1',
+    title: 'Example - Equipo 1 - Grupo A',
+  },
+  {
+    src: '/images/teams/Team2.jpg',
+    alt: 'Foto 2',
+    title: 'Example - Equipo 2 - Grupo A',
+  },
+  {
+    src: '/images/teams/Team3.jpg',
+    alt: 'Foto 3',
+    title: 'Example - Equipo 3 - Grupo A',
+  },
+  {
+    src: '/images/teams/Team4.jpg',
+    alt: 'Foto 4',
+    title: 'Example - Equipo 4 - Grupo A',
+  }
+];
+
+export const slidesGroupB = [
+  {
+    src: '/images/teams/Team5.jpeg',
+    alt: 'Foto 1',
+    title: 'Example - Equipo 1 - Grupo B',
+  },
+  {
+    src: '/images/teams/Team2.jpg',
+    alt: 'Foto 2',
+    title: 'Example - Equipo 2 - Grupo B',
+  },
+  {
+    src: '/images/teams/Team3.jpg',
+    alt: 'Foto 3',
+    title: 'Example - Equipo 3 - Grupo B',
+  },
+  {
+    src: '/images/teams/Team4.jpg',
+    alt: 'Foto 4',
+    title: 'Example - Equipo 4 - Grupo B',
+  }
+];
+
+export default function Collage({ slides: customSlides, compact = false }: CollageProps) {
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
+  
+  // Usar slides personalizados si se proporcionan, sino usar los por defecto
+  const imagesToShow = customSlides || slides;
+  
+  // Si se pasan slides personalizados, mostrar solo 4 (para modal de torneo)
+  // Si no, mostrar todas (para página de memorias)
+  const displayImages = customSlides ? imagesToShow.slice(0, 4) : imagesToShow;
+  
+  // Grid diferente según el caso
+  const gridClass = customSlides 
+    ? "grid grid-cols-2 gap-2" 
+    : "grid grid-cols-2 sm:grid-cols-3 gap-2 mb-8";
+  
+  // Tamaño de imagen: compact para modal de torneo, normal para otros usos
+  const imageClass = compact
+    ? "rounded-lg cursor-pointer object-cover w-full h-24 sm:h-28 hover:opacity-90 transition"
+    : customSlides
+    ? "rounded-lg cursor-pointer object-cover w-full h-32 sm:h-40 hover:opacity-90 transition"
+    : "rounded-lg cursor-pointer object-cover w-full h-40 sm:h-48 md:h-56 hover:opacity-90 transition";
 
   return (
     <>
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-8">
-        {slides.map((image, i) => (
+      <div className={gridClass}>
+        {displayImages.map((image, i) => (
           <img
             key={i}
             src={image.src}
             alt={image.alt}
-            className="rounded-lg cursor-pointer object-cover w-full h-40 sm:h-48 md:h-56 hover:opacity-90 transition"
+            className={imageClass}
             onClick={() => {
               setIndex(i);
               setOpen(true);
@@ -113,7 +189,7 @@ export default function Collage() {
           open={open}
           close={() => setOpen(false)}
           index={index}
-          slides={slides}
+          slides={imagesToShow}
           plugins={[Thumbnails, Captions]}
           captions={{ descriptionTextAlign: 'center' }}
         />
