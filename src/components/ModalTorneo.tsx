@@ -89,7 +89,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                         {/* Fila 1: Campeón y Subcampeón */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-4xl">
                             {/* Campeón */}
-                            <div className="bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 border-4 border-yellow-600 rounded-xl p-4 shadow-2xl transform hover:scale-105 transition-transform">
+                            <div className="bg-gradient-to-br from-yellow-400 via-amber-500 to-yellow-600 border-3 border-yellow-600 rounded-xl p-4 shadow-2xl transform hover:scale-105 transition-transform">
                                 <div className="text-center">
                                     <div className="text-4xl mb-2">🏆</div>
                                     <h4 className="text-lg sm:text-xl font-black text-white drop-shadow-lg mb-2">
@@ -104,7 +104,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                             </div>
 
                             {/* Subcampeón */}
-                            <div className="bg-gradient-to-br from-gray-300 via-gray-400 to-gray-500 border-4 border-gray-600 rounded-xl p-4 shadow-2xl transform hover:scale-105 transition-transform">
+                            <div className="bg-gradient-to-br from-gray-300 via-gray-400 to-gray-500 border-3 border-gray-600 rounded-xl p-4 shadow-2xl transform hover:scale-105 transition-transform">
                                 <div className="text-center">
                                     <div className="text-4xl mb-2">🥈</div>
                                     <h4 className="text-lg sm:text-xl font-black text-white drop-shadow-lg mb-2">
