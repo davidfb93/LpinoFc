@@ -24,11 +24,17 @@ export default function Evento() {
 
             {/* Botones */}
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6 sm:mt-8">
+                <a href="https://wa.me/61403976870?text=¡Hola!%20Estoy%20interesado%20en%20apoyar%20este%20evento%20." target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                    <button className="bg-green-700 text-white px-4 py-2 rounded-full shadow-lg flex items-center justify-center space-x-2 w-full hover:bg-green-600 transition-colors">
+                        <IconBrandWhatsapp size={24} className="sm:w-8 sm:h-8" color="white" />
+                        <span className="text-sm sm:text-base">Apoyar evento</span>
+                    </button>
+                </a>
                 <button
-                    onClick={() => setIsModalOpen(true)}
+                    onClick={() => setIsModalOpenTorneo(true)}
                     className="bg-green-700 text-white font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:bg-green-600 transition-colors w-full sm:w-auto"
                 >
-                    Más información
+                    Seguimiento Torneo 🏆
                 </button>
                 {/* <a href="https://wa.me/61403976870?text=¡Hola!%20Estoy%20interesado%20en%20inscribir%20mi%20equipo%20al%20octagonal%20de%20futbol%2011%20de%20fin%20de%20año." target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                     <button className="bg-green-700 text-white px-4 py-2 rounded-full shadow-lg flex items-center justify-center space-x-2 w-full hover:bg-green-600 transition-colors">
@@ -48,17 +54,11 @@ export default function Evento() {
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-6 sm:mt-8">
-                <a href="https://wa.me/61403976870?text=¡Hola!%20Estoy%20interesado%20en%20apoyar%20este%20evento%20." target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                    <button className="bg-green-700 text-white px-4 py-2 rounded-full shadow-lg flex items-center justify-center space-x-2 w-full hover:bg-green-600 transition-colors">
-                        <IconBrandWhatsapp size={24} className="sm:w-8 sm:h-8" color="white" />
-                        <span className="text-sm sm:text-base">Apoyar evento</span>
-                    </button>
-                </a>
                 <button
-                    onClick={() => setIsModalOpenTorneo(true)}
+                    onClick={() => setIsModalOpen(true)}
                     className="bg-green-700 text-white font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:bg-green-600 transition-colors w-full sm:w-auto"
                 >
-                    Seguimiento Torneo 🏆
+                    Más información
                 </button>
             </div>
 
