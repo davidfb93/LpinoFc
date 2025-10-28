@@ -2,18 +2,16 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import ModalTorneo from './ModalTorneo';
 
 export default function OnboardingModal() {
     const [isOpen, setIsOpen] = useState(true);
     const router = useRouter();
 
+    const [isModalOpenTorneo, setIsModalOpenTorneo] = useState(false);
+
     const handleClose = () => {
         setIsOpen(false);
-    };
-
-    const handleGoToEventos = () => {
-        setIsOpen(false);
-        router.push('/eventos');
     };
 
     if (!isOpen) return null;
@@ -27,27 +25,27 @@ export default function OnboardingModal() {
                     className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white rounded-full p-2 transition-all duration-200 shadow-lg"
                     aria-label="Cerrar"
                 >
-                    <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        className="h-6 w-6 text-gray-700" 
-                        fill="none" 
-                        viewBox="0 0 24 24" 
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 text-gray-700"
+                        fill="none"
+                        viewBox="0 0 24 24"
                         stroke="currentColor"
                     >
-                        <path 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            strokeWidth={2} 
-                            d="M6 18L18 6M6 6l12 12" 
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M6 18L18 6M6 6l12 12"
                         />
                     </svg>
                 </button>
 
                 {/* Imagen del evento */}
                 <div className="w-full flex justify-center items-center bg-gray-100">
-                    <img 
-                        src="/images/octagonal.jpg" 
-                        alt="Evento Octagonal" 
+                    <img
+                        src="/images/octagonal.jpg"
+                        alt="Evento Octagonal"
                         className="w-full h-auto object-contain"
                     />
                 </div>
@@ -58,15 +56,19 @@ export default function OnboardingModal() {
                         ¡Bienvenido a LPINO FC!
                     </h2>
                     <p className="text-gray-600 mb-4 sm:mb-6 text-base sm:text-lg">
-                        Para conocer más sobre este y nuestros proximos eventos por favor da clic en el botón "Ir a Eventos"
+                        La información del torneo se actualizara 12 horas despues del ultimo partido jugado en cada fecha.
                     </p>
-                    
+
                     <button
-                        onClick={handleGoToEventos}
-                        className="bg-green-700 hover:bg-green-700 text-white font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                        onClick={() => setIsModalOpenTorneo(true)}
+                        className="bg-green-700 text-white font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg hover:bg-green-600 transition-colors w-full sm:w-auto"
                     >
-                        Ir a Eventos
+                        Seguimiento Torneo 🏆
                     </button>
+
+                    {/* Modal de Seguimiento torneo */}
+                    <ModalTorneo isOpen={isModalOpenTorneo} onClose={() => setIsModalOpenTorneo(false)} />
+
                 </div>
             </div>
 

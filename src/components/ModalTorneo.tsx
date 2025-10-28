@@ -271,7 +271,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                         </div>
                                     </div>
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(((Horario por confirmar)))</span>
+                                        <span className="text-[11px] text-gray-500">(Horario por confirmar)</span>
                                         <div className="flex items-center justify-center gap-3">
                                             <span className="text-sm sm:text-base font-medium text-gray-700">Armenia United</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
