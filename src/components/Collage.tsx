@@ -102,22 +102,22 @@ export const slidesGroupA = [
   {
     src: '/images/teams/Team1.jpg',
     alt: 'Foto 1',
-    title: 'Example - Equipo 1 - Grupo A',
+    title: 'Tramites - Grupo A',
   },
   {
     src: '/images/teams/Team2.jpg',
     alt: 'Foto 2',
-    title: 'Example - Equipo 2 - Grupo A',
+    title: 'Elite CD - Grupo A',
   },
   {
     src: '/images/teams/Team3.jpg',
     alt: 'Foto 3',
-    title: 'Example - Equipo 3 - Grupo A',
+    title: 'Arsenal FC - Grupo A',
   },
   {
-    src: '/images/teams/Team4.jpg',
+    src: '/images/amistosos.jpg',
     alt: 'Foto 4',
-    title: 'Example - Equipo 4 - Grupo A',
+    title: 'Lpino FC - Grupo A',
   }
 ];
 
@@ -125,22 +125,22 @@ export const slidesGroupB = [
   {
     src: '/images/teams/Team5.jpeg',
     alt: 'Foto 1',
-    title: 'Example - Equipo 1 - Grupo B',
+    title: 'Cubillos FC - Grupo B',
   },
   {
     src: '/images/teams/Team2.jpg',
     alt: 'Foto 2',
-    title: 'Example - Equipo 2 - Grupo B',
+    title: 'Armenia United - Grupo B',
   },
   {
     src: '/images/teams/Team3.jpg',
     alt: 'Foto 3',
-    title: 'Example - Equipo 3 - Grupo B',
+    title: 'Estrato Cero - Grupo B',
   },
   {
     src: '/images/teams/Team4.jpg',
     alt: 'Foto 4',
-    title: 'Example - Equipo 4 - Grupo B',
+    title: 'Limite 21 - Grupo B',
   }
 ];
 
