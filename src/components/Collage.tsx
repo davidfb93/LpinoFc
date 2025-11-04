@@ -100,48 +100,35 @@ export const slides = [
 
 export const slidesGroupA = [
   {
-    src: '/images/teams/Team1.jpg',
-    alt: 'Foto 1',
-    title: 'Tramites - Grupo A',
-  },
-  {
-    src: '/images/teams/Team2.jpg',
-    alt: 'Foto 2',
-    title: 'Elite CD - Grupo A',
-  },
-  {
-    src: '/images/teams/Team3.jpg',
-    alt: 'Foto 3',
-    title: 'Arsenal FC - Grupo A',
-  },
-  {
     src: '/images/amistosos.jpg',
-    alt: 'Foto 4',
-    title: 'Lpino FC - Grupo A',
-  }
-];
-
-export const slidesGroupB = [
-  {
-    src: '/images/teams/Team5.jpeg',
     alt: 'Foto 1',
-    title: 'Cubillos FC - Grupo B',
+    title: 'LPino FC',
+  },
+  {
+    src: '/images/teams/Armenia-united.jpg',
+    alt: 'Foto 2',
+    title: 'Armenia United',
+  },
+  {
+    src: '/images/teams/Team1.jpg',
+    alt: 'Foto 3',
+    title: 'Cubillos FC',
   },
   {
     src: '/images/teams/Team2.jpg',
-    alt: 'Foto 2',
-    title: 'Armenia United - Grupo B',
-  },
-  {
-    src: '/images/teams/Team3.jpg',
-    alt: 'Foto 3',
-    title: 'Estrato Cero - Grupo B',
-  },
-  {
-    src: '/images/teams/Team4.jpg',
     alt: 'Foto 4',
-    title: 'Limite 21 - Grupo B',
-  }
+    title: 'Tramites',
+  },
+    {
+    src: '/images/teams/Team3.jpg',
+    alt: 'Foto 4',
+    title: 'Estrato 0',
+  },
+    {
+    src: '/images/teams/EliteFC.jpg',
+    alt: 'Foto 4',
+    title: 'Elite FC',
+  },
 ];
 
 export default function Collage({ slides: customSlides, compact = false }: CollageProps) {
@@ -151,9 +138,9 @@ export default function Collage({ slides: customSlides, compact = false }: Colla
   // Usar slides personalizados si se proporcionan, sino usar los por defecto
   const imagesToShow = customSlides || slides;
   
-  // Si se pasan slides personalizados, mostrar solo 4 (para modal de torneo)
+  // Si se pasan slides personalizados, mostrar solo 6 (para modal de torneo)
   // Si no, mostrar todas (para página de memorias)
-  const displayImages = customSlides ? imagesToShow.slice(0, 4) : imagesToShow;
+  const displayImages = customSlides ? imagesToShow.slice(0, 6) : imagesToShow;
   
   // Grid diferente según el caso
   const gridClass = customSlides 
