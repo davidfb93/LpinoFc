@@ -125,7 +125,7 @@ export const slidesGroupA = [
     title: 'Estrato 0',
   },
     {
-    src: '/images/teams/EliteFC.jpg',
+    src: '/images/teams/Team5.jpeg',
     alt: 'Foto 4',
     title: 'Elite FC',
   },
