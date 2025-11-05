@@ -1,3 +1,5 @@
+'use client';
+
 import React from "react";
 
 // Interfaz para los datos de un equipo
@@ -20,10 +22,21 @@ export interface EquipoData {
 // Interfaz para el componente TablaPosiciones
 interface TablaPosicionesProps {
     data: EquipoData[];
+    onRowClick?: (equipo: EquipoData) => void;
 }
 
+const teamLogos: Record<string, string> = {
+    "Lpino FC": "/logos-icons/logo2.png",
+    "Cubillos FC": "/logos-icons/LogoCubillos.png",
+    "Armenia United": "/logos-icons/LogoArmenia.png",
+    "Tramites": "/logos-icons/LogoTramites.png",
+    "Elite FC": "/logos-icons/LogoElite.png",
+    "Estrato 0": "/logos-icons/LogoEstrato.png",
+};
+const defaultLogo = "/logos-icons/logo1.svg";
+
 // Componente reutilizable para la tabla de posiciones
-export default function TablaPosiciones({ data }: TablaPosicionesProps) {
+export default function TablaPosiciones({ data, onRowClick }: TablaPosicionesProps) {
     return (
         <div className="overflow-x-auto">
             <table className="w-full text-xs sm:text-sm bg-gray-300 text-black rounded-lg">
@@ -45,10 +58,15 @@ export default function TablaPosiciones({ data }: TablaPosicionesProps) {
                 </thead>
                 <tbody>
                     {data.map((equipo) => (
-                        <tr key={equipo.pos} className="border-b border-gray-800 hover:bg-gray-600 transition">
+                        <tr key={equipo.pos} className="border-b border-gray-800 hover:bg-gray-600 transition cursor-pointer" onClick={() => onRowClick?.(equipo)}>
                             <td className="p-2 sm:p-3">
                                 <div className="flex items-center gap-2">
                                     <span className="text-gray-400">{equipo.pos}</span>
+                                    <img
+                                        src={teamLogos[equipo.equipo] ?? defaultLogo}
+                                        alt={equipo.equipo}
+                                        className="w-5 h-5 sm:w-6 sm:h-6 rounded-full object-contain bg-white border border-gray-300"
+                                    />
                                     <span className="font-medium">{equipo.equipo}</span>
                                 </div>
                             </td>

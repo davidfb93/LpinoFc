@@ -1,8 +1,12 @@
+ 'use client';
+
 import { X } from "lucide-react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link"
-import Collage, { slidesGroupA, slidesGroupB } from "./Collage";
+import Collage, { slidesGroupA } from "./Collage";
 import TablaPosiciones, { EquipoData } from "./TablaPosiciones";
+import PdfModal from "./PdfModal";
+import ModalComunicado from "./ModalComunicado";
 
 interface ModalTorneoProps {
     isOpen: boolean;
@@ -10,27 +14,27 @@ interface ModalTorneoProps {
 }
 
 // Datos de ejemplo para la tabla de posiciones
-// ["✓", "✓", "✓"]
+// ["✓", "✗", "-"]
 const grupoAData: EquipoData[] = [
-    { pos: 1, equipo: "Tramites", pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0, ta: 0, tr: 0, ultimos: ["", "", ""] },
-    { pos: 2, equipo: "Elite CD", pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0, ta: 0, tr: 0, ultimos: ["", "", ""] },
-    { pos: 3, equipo: "Arsenal FC", pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0, ta: 0, tr: 0, ultimos: ["", "", ""] },
-    { pos: 4, equipo: "Lpino FC", pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg:  0, pts: 0, ta: 0, tr: 0, ultimos: ["", "", ""] },
-];
-
-const grupoBData: EquipoData[] = [
-    { pos: 1, equipo: "Cubillos FC", pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0, ta: 0, tr: 0, ultimos: ["", "", ""] },
+    { pos: 1, equipo: "Lpino FC", pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0, ta: 0, tr: 0, ultimos: ["", "", ""] },
     { pos: 2, equipo: "Armenia United", pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0, ta: 0, tr: 0, ultimos: ["", "", ""] },
-    { pos: 3, equipo: "Estrato Cero", pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0, ta: 0, tr: 0, ultimos: ["", "", ""] },
-    { pos: 4, equipo: "Limite 21", pj:0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0, ta: 0, tr: 0, ultimos: ["", "", ""] },
+    { pos: 3, equipo: "Cubillos FC", pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0, ta: 0, tr: 0, ultimos: ["", "", ""] },
+    { pos: 4, equipo: "Tramites", pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0, ta: 0, tr: 0, ultimos: ["", "", ""] },
+    { pos: 5, equipo: "Estrato 0", pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0, ta: 0, tr: 0, ultimos: ["", "", ""] },
+    { pos: 6, equipo: "Elite FC", pj: 0, g: 0, e: 0, p: 0, gf: 0, gc: 0, dg: 0, pts: 0, ta: 0, tr: 0, ultimos: ["", "", ""] },
 ];
 
 export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
+    const [isPdfOpen, setIsPdfOpen] = useState(false);
+    const [isComunicadoOpen, setIsComunicadoOpen] = useState(false);
     // Cerrar modal con tecla ESC
     useEffect(() => {
         const handleEsc = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
-                onClose();
+                // Solo cerrar el modal principal si el comunicado NO está abierto
+                if (!isComunicadoOpen) {
+                    onClose();
+                }
             }
         };
 
@@ -41,7 +45,22 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
         return () => {
             window.removeEventListener('keydown', handleEsc);
         };
-    }, [isOpen, onClose]);
+    }, [isOpen, isComunicadoOpen, onClose]);
+
+    // Abrir el comunicado automáticamente cuando se abre este modal (si no fue suprimido hoy)
+    useEffect(() => {
+        if (isOpen) {
+            try {
+                const today = new Date().toISOString().slice(0, 10);
+                const saved = localStorage.getItem('lpino_comunicado_suppress_date');
+                setIsComunicadoOpen(saved === today ? false : true);
+            } catch {
+                setIsComunicadoOpen(true);
+            }
+        } else {
+            setIsComunicadoOpen(false);
+        }
+    }, [isOpen]);
 
     if (!isOpen) return null;
 
@@ -88,7 +107,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                     {/* Grupo A */}
                     <div className="space-y-4">
                         <div className="bg-gradient-to-br from-green-50 to-green-100 border-2 border-gray-300 rounded-lg p-3 sm:p-4">
-                            <h3 className="text-base sm:text-lg font-bold text-green-800">Grupo A</h3>
+                            <h3 className="text-base sm:text-lg font-bold text-green-800">Tabla de posiciones, programación de partidos e información de equipos</h3>
                         </div>
 
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -96,7 +115,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                 <Collage slides={slidesGroupA} compact />
                             </div>
                             <div>
-                                <TablaPosiciones data={grupoAData} />
+                                <TablaPosiciones data={grupoAData} onRowClick={() => setIsPdfOpen(true)} />
                             </div>
                         </div>
 
@@ -107,23 +126,33 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                 <h4 className="text-sm sm:text-base font-bold text-green-900 mb-3 text-center">Fecha 1 - 09 de Noviembre</h4>
                                 <div className="space-y-2">
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario por confirmar)</span>
+                                        <span className="text-[11px] text-gray-500">(10:00 AM - Cancha por confrmar)</span>
                                         <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Tramites</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Lpino FC</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             <span className="text-gray-400 font-bold">-</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Elite CD</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Tramites</span>
                                         </div>
                                     </div>
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario por confirmar)</span>
+                                        <span className="text-[11px] text-gray-500">(10:00 AM - Cancha por confrmar)</span>
                                         <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Arsenal FC</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Armenia United</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             <span className="text-gray-400 font-bold">-</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Lpino FC</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Cubillos FC</span>
+                                        </div>
+                                    </div>
+                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
+                                        <span className="text-[11px] text-gray-500">(04:00 PM - Cancha por confrmar)</span>
+                                        <div className="flex items-center justify-center gap-3">
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Elite FC</span>
+                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                            <span className="text-gray-400 font-bold">-</span>
+                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Estrato 0</span>
                                         </div>
                                     </div>
                                 </div>
@@ -134,23 +163,33 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                 <h4 className="text-sm sm:text-base font-bold text-green-900 mb-3 text-center">Fecha 2 - 16 de Noviembre</h4>
                                 <div className="space-y-2">
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario por confirmar)</span>
+                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
                                         <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Tramites</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Lpino FC</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             <span className="text-gray-400 font-bold">-</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Arsenal FC</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Armenia United</span>
                                         </div>
                                     </div>
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario por confirmar)</span>
+                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
                                         <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Elite CD</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Estrato 0</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             <span className="text-gray-400 font-bold">-</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Lpino FC</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Cubillos FC</span>
+                                        </div>
+                                    </div>
+                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
+                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
+                                        <div className="flex items-center justify-center gap-3">
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Elite FC</span>
+                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                            <span className="text-gray-400 font-bold">-</span>
+                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Tramites</span>
                                         </div>
                                     </div>
                                 </div>
@@ -161,9 +200,9 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                 <h4 className="text-sm sm:text-base font-bold text-green-900 mb-3 text-center">Fecha 3 - 23 de Noviembre</h4>
                                 <div className="space-y-2">
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario por confirmar)</span>
+                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
                                         <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Tramites</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Elite FC</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             <span className="text-gray-400 font-bold">-</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
@@ -171,113 +210,23 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                         </div>
                                     </div>
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario por confirmar)</span>
-                                        <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Elite CD</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-gray-400 font-bold">-</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Arsenal FC</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Grupo B */}
-                    <div className="space-y-4">
-                        <div className="bg-gradient-to-br from-green-50 to-green-100 border-2 border-gray-300 rounded-lg p-3 sm:p-4">
-                            <h3 className="text-base sm:text-lg font-bold text-green-800">Grupo B</h3>
-                        </div>
-
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                            <div>
-                                <Collage slides={slidesGroupB} compact />
-                            </div>
-                            <div>
-                                <TablaPosiciones data={grupoBData} />
-                            </div>
-                        </div>
-
-                        {/* Fechas de Partidos - Grupo B */}
-                        <div className="space-y-4">
-                            {/* Fecha 1 */}
-                            <div className="bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-300 rounded-lg p-4 shadow-md">
-                                <h4 className="text-sm sm:text-base font-bold text-green-900 mb-3 text-center">Fecha 1 - 09 de Noviembre</h4>
-                                <div className="space-y-2">
-                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario por confirmar)</span>
-                                        <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Cubillos FC</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-gray-400 font-bold">-</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Armenia United</span>
-                                        </div>
-                                    </div>
-                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario por confirmar)</span>
-                                        <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Estrato Cero</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-gray-400 font-bold">-</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Limite 21</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Fecha 2 */}
-                            <div className="bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-300 rounded-lg p-4 shadow-md">
-                                <h4 className="text-sm sm:text-base font-bold text-green-900 mb-3 text-center">Fecha 2 - 16 de Noviembre</h4>
-                                <div className="space-y-2">
-                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario por confirmar)</span>
-                                        <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Cubillos FC</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-gray-400 font-bold">-</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Estrato Cero</span>
-                                        </div>
-                                    </div>
-                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario por confirmar)</span>
+                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
                                         <div className="flex items-center justify-center gap-3">
                                             <span className="text-sm sm:text-base font-medium text-gray-700">Armenia United</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             <span className="text-gray-400 font-bold">-</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Limite 21</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Tramites</span>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            {/* Fecha 3 */}
-                            <div className="bg-gradient-to-br from-green-50 to-green-100 border-2 border-green-300 rounded-lg p-4 shadow-md">
-                                <h4 className="text-sm sm:text-base font-bold text-green-900 mb-3 text-center">Fecha 3 - 23 de Noviembre</h4>
-                                <div className="space-y-2">
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario por confirmar)</span>
+                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
                                         <div className="flex items-center justify-center gap-3">
                                             <span className="text-sm sm:text-base font-medium text-gray-700">Cubillos FC</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             <span className="text-gray-400 font-bold">-</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Limite 21</span>
-                                        </div>
-                                    </div>
-                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(((Horario por confirmar)))</span>
-                                        <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Armenia United</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-gray-400 font-bold">-</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Estrato Cero</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Estrato 0</span>
                                         </div>
                                     </div>
                                 </div>
@@ -286,13 +235,13 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                     </div>
 
                     {/* Gran Final */}
-                    <div className="space-y-4">
+                    <div className="space-y-1">
                         <div className="bg-gradient-to-r from-green-400 via-green-700 to-green-600 border-3 border-green-900 rounded-xl p-4 shadow-2xl">
                             <h3 className="text-lg sm:text-xl md:text-2xl font-black text-center text-white drop-shadow-lg mb-2">
                                 🏆 GRAN FINAL 🏆
                             </h3>
                             <p className="text-center text-yellow-100 font-semibold text-sm sm:text-base mb-4">
-                                30 de Noviembre
+                                30 de Noviembre - (Horario y cancha por confirmar)
                             </p>
                         </div>
 
@@ -302,7 +251,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                     {/* Equipo 1 */}
                                     <div className="flex flex-col items-center flex-1">
                                         <span className="text-base sm:text-lg md:text-xl font-bold text-gray-800 mb-2">
-                                            Ganador Grupo A
+                                            Primer puesto general
                                         </span>
                                         <div className="bg-green-200 border-3 border-green-600 rounded-lg p-4 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center shadow-md">
                                             <span className="text-3xl sm:text-4xl md:text-5xl font-black text-green-700">
@@ -321,7 +270,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                     {/* Equipo 2 */}
                                     <div className="flex flex-col items-center flex-1">
                                         <span className="text-base sm:text-lg md:text-xl font-bold text-gray-800 mb-2">
-                                            Ganador Grupo B
+                                            Segundo puesto general
                                         </span>
                                         <div className="bg-green-200 border-3 border-green-600 rounded-lg p-4 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center shadow-md">
                                             <span className="text-3xl sm:text-4xl md:text-5xl font-black text-green-700">
@@ -341,7 +290,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                         </div>
                     </div>
 
-                                        {/* Premios del Torneo */}
+                    {/* Premios del Torneo */}
                     <div className="flex flex-col items-center gap-6 w-full">
                         {/* Fila 1: Campeón y Subcampeón */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-4xl">
@@ -424,9 +373,19 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
+            <ModalComunicado
+                isOpen={isComunicadoOpen}
+                onClose={() => setIsComunicadoOpen(false)}
+            />
+            <PdfModal
+                isOpen={isPdfOpen}
+                onClose={() => setIsPdfOpen(false)}
+                title="Planillas equipos participantes"
+                filePath="/archives/TORNEO_OCTAGONAL_FIN_DE_AÑO_LPINOFC.pdf"
+                showDownloads={false}
+            />
         </div>
     );
 }
