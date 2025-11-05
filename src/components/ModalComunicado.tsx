@@ -38,13 +38,13 @@ export default function ModalComunicado({ isOpen, onClose, title = "Comunicado E
         <div className="p-5 overflow-y-auto">
           <ol className="list-decimal pl-5 space-y-3 text-gray-800 text-sm sm:text-base">
             <li>
-              Cambio en el formato del torneo debido al incumplimiento por parte de dos equipos. La premiación seguirá siendo igual. Ahora se tendrá un grupo único, los rivales se definen mediante sorteo y los dos primeros equipos de la tabla general pasarán a disputar la final.
+              <strong>Cambio en el formato del torneo</strong> debido al incumplimiento por parte de dos equipos. La premiación seguirá siendo igual. Ahora se tendrá un grupo único de 6 equipos, cada equipo jugará 3 partidos en fase de grupos, los rivales se definen mediante sorteo aleatorio. los dos equipos que consigan la mayor cantidad de puntos serán primeros de la tabla general y pasarán a disputar la final.
             </li>
             <li>
-              Posibilidad de inscribir hasta 6 jugadores antes del inicio de la segunda fecha (<strong>15 de noviembre</strong>). El listado se recibirá en el WhatsApp oficial de la fundación.
+              Se podrá inscribir hasta 6 jugadores adicionales a los 18 de la planilla oficial, esto escuchando la sugerencia de varios equipos.  Los jugadores extras deben ser inscritos antes del inicio de la segunda fecha <strong>(15 de noviembre)</strong>. El listado se recibirá en el WhatsApp oficial de la fundación.
             </li>
             <li>
-              Los arqueros podrán ser parte de la regla de los jugadores de 35 años.
+              Los arqueros podrán ser parte de la regla de los jugadores de 35+ años.
             </li>
           </ol>
         </div>

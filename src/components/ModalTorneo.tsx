@@ -126,7 +126,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                 <h4 className="text-sm sm:text-base font-bold text-green-900 mb-3 text-center">Fecha 1 - 09 de Noviembre</h4>
                                 <div className="space-y-2">
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(09:00 AM)</span>
+                                        <span className="text-[11px] text-gray-500">(10:00 AM)</span>
                                         <div className="flex items-center justify-center gap-3">
                                             <span className="text-sm sm:text-base font-medium text-gray-700">Lpino FC</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
@@ -136,7 +136,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                         </div>
                                     </div>
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(03:00 PM)</span>
+                                        <span className="text-[11px] text-gray-500">(10:00 AM)</span>
                                         <div className="flex items-center justify-center gap-3">
                                             <span className="text-sm sm:text-base font-medium text-gray-700">Armenia United</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
