@@ -126,17 +126,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                 <h4 className="text-sm sm:text-base font-bold text-green-900 mb-3 text-center">Fecha 1 - 09 de Noviembre</h4>
                                 <div className="space-y-2">
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(10:00 AM - Cancha por confrmar)</span>
-                                        <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Lpino FC</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-gray-400 font-bold">-</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Tramites</span>
-                                        </div>
-                                    </div>
-                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(10:00 AM - Cancha por confrmar)</span>
+                                        <span className="text-[11px] text-gray-500">(10:00 AM - Cancha 4)</span>
                                         <div className="flex items-center justify-center gap-3">
                                             <span className="text-sm sm:text-base font-medium text-gray-700">Armenia United</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
@@ -146,7 +136,17 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                         </div>
                                     </div>
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(04:00 PM - Cancha por confrmar)</span>
+                                        <span className="text-[11px] text-gray-500">(12:00 PM - Cancha 2)</span>
+                                        <div className="flex items-center justify-center gap-3">
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Lpino FC</span>
+                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                            <span className="text-gray-400 font-bold">-</span>
+                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Tramites</span>
+                                        </div>
+                                    </div>
+                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
+                                        <span className="text-[11px] text-gray-500">(04:00 PM - Cancha 3)</span>
                                         <div className="flex items-center justify-center gap-3">
                                             <span className="text-sm sm:text-base font-medium text-gray-700">Elite FC</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
@@ -169,13 +169,13 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             <span className="text-gray-400 font-bold">-</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Armenia United</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Estrato 0</span>
                                         </div>
                                     </div>
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
                                         <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
                                         <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Estrato 0</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Tramites</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             <span className="text-gray-400 font-bold">-</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
@@ -189,7 +189,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             <span className="text-gray-400 font-bold">-</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Tramites</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Armenia United</span>
                                         </div>
                                     </div>
                                 </div>
@@ -202,21 +202,11 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
                                         <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
                                         <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Elite FC</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-gray-400 font-bold">-</span>
-                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             <span className="text-sm sm:text-base font-medium text-gray-700">Lpino FC</span>
-                                        </div>
-                                    </div>
-                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
-                                        <div className="flex items-center justify-center gap-3">
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Armenia United</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             <span className="text-gray-400 font-bold">-</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            <span className="text-sm sm:text-base font-medium text-gray-700">Tramites</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Armenia United</span>
                                         </div>
                                     </div>
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
@@ -227,6 +217,16 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                             <span className="text-gray-400 font-bold">-</span>
                                             <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             <span className="text-sm sm:text-base font-medium text-gray-700">Estrato 0</span>
+                                        </div>
+                                    </div>
+                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
+                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
+                                        <div className="flex items-center justify-center gap-3">
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Tramites</span>
+                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                            <span className="text-gray-400 font-bold">-</span>
+                                            <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                            <span className="text-sm sm:text-base font-medium text-gray-700">Elite FC</span>
                                         </div>
                                     </div>
                                 </div>
