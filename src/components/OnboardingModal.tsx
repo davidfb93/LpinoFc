@@ -56,7 +56,7 @@ export default function OnboardingModal() {
                         ¡Bienvenido a LPINO FC!
                     </h2>
                     <p className="text-gray-600 mb-4 sm:mb-6 text-base sm:text-lg">
-                        La información del torneo se actualizara 12 horas despues del ultimo partido jugado en cada fecha.
+                        La información del torneo se actualizara 24 horas despues del ultimo partido jugado en cada fecha.
                     </p>
 
                     <button
