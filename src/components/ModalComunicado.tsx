@@ -40,7 +40,7 @@ export default function ModalComunicado({ isOpen, onClose, title = "Comunicado E
             <li>
               <strong>Pago de cancha y arbitraje</strong>
               <br />
-              Pago cancha + Arbitraje Fecha 2 (Domingo 16 Nov) debe realizarse a través de Nequi/Daviplata 310-7344350 a más tardar el día Jueves 13 Noviembre y enviar soporte al WhatsApp ‪+61 403976870‬.  ÚNICO MEDIO DE PAGO
+              Pago cancha + Arbitraje Fecha 2 (Domingo 16 Nov) por valor de <strong>$ 100,000</strong> debe realizarse a través de Nequi/Daviplata 310-7344350 a más tardar el día Jueves 13 Noviembre y enviar soporte al WhatsApp ‪+61 403976870‬.  ÚNICO MEDIO DE PAGO
             </li>
             <li>
               <strong>Jugadores amonestados en la primera fecha</strong>
@@ -60,9 +60,9 @@ export default function ModalComunicado({ isOpen, onClose, title = "Comunicado E
               Enviar recibo 🧾 al WhatsApp ‪+61 403976870‬ con nombre del jugador. Si el pago es total por todos los jugadores, nombre del equipo.
               <br />
               <br />
-              ⭐(Tarjeta amarilla)
+              ⭐(Tarjeta amarilla) - <strong>$ 5,000</strong>
               <br />
-              🚨(Tarjeta Roja)
+              🚨(Tarjeta Roja) - <strong>$ 10,000</strong>
               <br />
               <br />
 

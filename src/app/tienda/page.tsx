@@ -61,7 +61,7 @@ const products: Product[] = [
     oldPrice: '60,000 COP',
     image: '/images/products/p6.jpg',
     isSale: true,
-    sizes: [''],
+    sizes: ['Unica'],
     images: ['/images/products/p6.jpg'],
   },
 ];
