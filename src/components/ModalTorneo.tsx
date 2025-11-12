@@ -1,4 +1,4 @@
- 'use client';
+'use client';
 
 import { X } from "lucide-react";
 import React, { useEffect, useState } from "react";
@@ -16,12 +16,12 @@ interface ModalTorneoProps {
 // Datos de ejemplo para la tabla de posiciones
 // ["✓", "✗", "-"]
 const grupoAData: EquipoData[] = [
-    { pos: 1, equipo: "Estrato 0",     pj: 1, g: 1, e: 0, p: 0, gf: 4, gc: 1, dg: 3, pts: 3, ta: 3, tr: 0, ultimos: ["✓", "", ""] },
-    { pos: 2, equipo: "Cubillos FC",   pj: 1, g: 1, e: 0, p: 0, gf: 2, gc: 0, dg: 2, pts: 3, ta: 1, tr: 1, ultimos: ["✓", "", ""] },
-    { pos: 3, equipo: "Lpino FC",      pj: 1, g: 1, e: 0, p: 0, gf: 2, gc: 1, dg: 1, pts: 3, ta: 4, tr: 1, ultimos: ["✓", "", ""] },
-    { pos: 4, equipo: "Tramites",      pj: 1, g: 0, e: 0, p: 1, gf: 1, gc: 2, dg: -1, pts: 0, ta: 1, tr: 0, ultimos: ["✗", "", ""] },
-    { pos: 5, equipo: "Armenia United",pj: 1, g: 0, e: 0, p: 1, gf: 0, gc: 2, dg: -2, pts: 0, ta: 4, tr: 0, ultimos: ["✗", "", ""] },
-    { pos: 6, equipo: "Elite FC",      pj: 1, g: 0, e: 0, p: 1, gf: 1, gc: 4, dg: -3, pts: 0, ta: 3, tr: 0, ultimos: ["✗", "", ""] },
+    { pos: 1, equipo: "Estrato 0", pj: 1, g: 1, e: 0, p: 0, gf: 4, gc: 1, dg: 3, pts: 3, ta: 3, tr: 0, ultimos: ["✓", "", ""] },
+    { pos: 2, equipo: "Cubillos FC", pj: 1, g: 1, e: 0, p: 0, gf: 2, gc: 0, dg: 2, pts: 3, ta: 1, tr: 1, ultimos: ["✓", "", ""] },
+    { pos: 3, equipo: "Lpino FC", pj: 1, g: 1, e: 0, p: 0, gf: 2, gc: 1, dg: 1, pts: 3, ta: 4, tr: 1, ultimos: ["✓", "", ""] },
+    { pos: 4, equipo: "Tramites", pj: 1, g: 0, e: 0, p: 1, gf: 1, gc: 2, dg: -1, pts: 0, ta: 1, tr: 0, ultimos: ["✗", "", ""] },
+    { pos: 5, equipo: "Armenia United", pj: 1, g: 0, e: 0, p: 1, gf: 0, gc: 2, dg: -2, pts: 0, ta: 4, tr: 0, ultimos: ["✗", "", ""] },
+    { pos: 6, equipo: "Elite FC", pj: 1, g: 0, e: 0, p: 1, gf: 1, gc: 4, dg: -3, pts: 0, ta: 3, tr: 0, ultimos: ["✗", "", ""] },
 ];
 
 export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
@@ -169,7 +169,19 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                 <h4 className="text-sm sm:text-base font-bold text-green-900 mb-3 text-center">Fecha 2 - 16 de Noviembre</h4>
                                 <div className="space-y-2">
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
+                                        <span className="text-[11px] text-gray-500">(Sabado 15 de Noviembre - 04:00 PM - Cancha La promesa)</span>
+                                        <div className="flex items-center w-full">
+                                            <span className="flex-1 text-right text-sm sm:text-base font-medium text-gray-700 pr-3">Elite FC</span>
+                                            <div className="w-16 flex items-center justify-center gap-2">
+                                                <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                                <span className="text-gray-400 font-bold">-</span>
+                                                <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                            </div>
+                                            <span className="flex-1 text-left text-sm sm:text-base font-medium text-gray-700 pl-3">Armenia United</span>
+                                        </div>
+                                    </div>
+                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
+                                        <span className="text-[11px] text-gray-500">(10:00 AM - Cancha 2)</span>
                                         <div className="flex items-center w-full">
                                             <span className="flex-1 text-right text-sm sm:text-base font-medium text-gray-700 pr-3">Lpino FC</span>
                                             <div className="w-16 flex items-center justify-center gap-2">
@@ -181,27 +193,15 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                         </div>
                                     </div>
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
+                                        <span className="text-[11px] text-gray-500">(12:00 PM - Cancha 3)</span>
                                         <div className="flex items-center w-full">
-                                            <span className="flex-1 text-right text-sm sm:text-base font-medium text-gray-700 pr-3">Tramites</span>
+                                            <span className="flex-1 text-right text-sm sm:text-base font-medium text-gray-700 pr-3">Cubillos FC</span>
                                             <div className="w-16 flex items-center justify-center gap-2">
                                                 <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                                 <span className="text-gray-400 font-bold">-</span>
                                                 <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             </div>
-                                            <span className="flex-1 text-left text-sm sm:text-base font-medium text-gray-700 pl-3">Cubillos FC</span>
-                                        </div>
-                                    </div>
-                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
-                                        <div className="flex items-center w-full">
-                                            <span className="flex-1 text-right text-sm sm:text-base font-medium text-gray-700 pr-3">Elite FC</span>
-                                            <div className="w-16 flex items-center justify-center gap-2">
-                                                <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                                <span className="text-gray-400 font-bold">-</span>
-                                                <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            </div>
-                                            <span className="flex-1 text-left text-sm sm:text-base font-medium text-gray-700 pl-3">Armenia United</span>
+                                            <span className="flex-1 text-left text-sm sm:text-base font-medium text-gray-700 pl-3">Tramites</span>
                                         </div>
                                     </div>
                                 </div>
