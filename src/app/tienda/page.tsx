@@ -152,11 +152,11 @@ function PaymentInstructionsModal({ onClose }: { onClose: () => void }) {
             <img src="/images/qrlpino.jpg" alt="QR LPino" className="w-56 h-56 object-contain" />
           </div>
           <ol className="list-decimal pl-6 space-y-3 text-gray-700">
-            <li>Escanea el código QR con tu aplicación Nequi o realizar la consignación al nequi/daviplata 3107344350</li>
+            <li>Escanea el código QR con tu aplicación Nequi o realiza la consignación al nequi/daviplata 3107344350</li>
             <li>Verifica que el destinatario sea JOSE FERNANDO VALENCIA y el valor a pagar sea correcto.</li>
             <li>Confirma el pago e incluye en la referencia tu nombre y producto.</li>
             <li>Toma un pantallazo del comprobante y envíalo al WhatsApp aqui abajo para confirmar tu pedido.</li>
-            <li>En unas horas el equip de logistica se pondra en contacto contigo para confirmar tu pedido y la entrega del mismo.</li>
+            <li>En unas horas el equipo de logistica se pondra en contacto contigo para confirmar tu pedido y la entrega del mismo.</li>
           </ol>
 
           <div className="flex items-center justify-center mt-6">
