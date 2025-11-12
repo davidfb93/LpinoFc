@@ -46,7 +46,6 @@ export default function ContactoPage() {
                                 <span className="text-sm sm:text-base">Contactar por WhatsApp</span>
                             </button>
                         </a>
-
                     </p>
                 </div>
 

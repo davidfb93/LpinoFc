@@ -1,5 +1,6 @@
 'use client'
 
+import { IconBrandWhatsapp } from "@tabler/icons-react";
 import { ShoppingCartIcon } from "lucide-react";
 import React, { useState, useEffect } from "react";
 
@@ -68,7 +69,7 @@ const products: Product[] = [
 
 const DEFAULT_SIZES = ["S", "M", "L", "XL", "2XL"];
 
-function ProductModal({ product, onClose }: { product: Product; onClose: () => void }) {
+function ProductModal({ product, onClose, onBuy }: { product: Product; onClose: () => void; onBuy: () => void }) {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const sizes = product.sizes && product.sizes.length > 0
     ? product.sizes.filter(s => s && s.trim().length > 0)
@@ -120,15 +121,53 @@ function ProductModal({ product, onClose }: { product: Product; onClose: () => v
                 ))}
               </div>
             </div>
-            <button
-              type="button"
-              className="mt-4 w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold py-3 rounded-xl shadow hover:opacity-90 transition"
-              onClick={onClose}
-            >
-              <ShoppingCartIcon className="w-5 h-5" />
-              Comprar producto
-            </button>
+
+            <div>
+              <button
+                type="button"
+                className="mt-4 w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold py-3 rounded-xl shadow hover:opacity-90 transition"
+                onClick={onBuy}
+              >
+                <ShoppingCartIcon className="w-5 h-5" />
+                Comprar producto
+              </button>
+            </div>
+
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PaymentInstructionsModal({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      <div className="absolute inset-0 bg-black/50" onClick={onClose} />
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 overflow-hidden">
+        <button onClick={onClose} className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl">×</button>
+        <div className="p-6">
+          <h2 className="text-xl font-bold text-center text-green-700 mb-4">Instructivo de pago</h2>
+          <div className="w-full flex items-center justify-center mb-6">
+            <img src="/images/qrlpino.jpg" alt="QR LPino" className="w-56 h-56 object-contain" />
+          </div>
+          <ol className="list-decimal pl-6 space-y-3 text-gray-700">
+            <li>Escanea el código QR con tu aplicación Nequi o realizar la consignación al nequi/daviplata 3107344350</li>
+            <li>Verifica que el destinatario sea JOSE FERNANDO VALENCIA y el valor a pagar sea correcto.</li>
+            <li>Confirma el pago e incluye en la referencia tu nombre y producto.</li>
+            <li>Toma un pantallazo del comprobante y envíalo al WhatsApp aqui abajo para confirmar tu pedido.</li>
+            <li>En unas horas el equip de logistica se pondra en contacto contigo para confirmar tu pedido y la entrega del mismo.</li>
+          </ol>
+
+          <div className="flex items-center justify-center mt-6">
+            <a href="https://wa.me/61403976870?text=¡Hola!%20Este%20es%20mi%20comprobante%20de%20compra." target="_blank" rel="noopener noreferrer" className="inline-block">
+              <button className="bg-green-700 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-full shadow-lg flex items-center justify-center space-x-2 hover:bg-green-800 transition-colors">
+                <IconBrandWhatsapp size={24} className="sm:w-8 sm:h-8" color="white" />
+                <span className="text-sm sm:text-base">Enviar comprobante de compra</span>
+              </button>
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
@@ -185,6 +224,7 @@ function ProductCard({ product, onOpen }: { product: Product; onOpen: (p: Produc
 
 function TiendaGrid() {
   const [selected, setSelected] = useState<Product | null>(null);
+  const [showPayment, setShowPayment] = useState(false);
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -193,7 +233,17 @@ function TiendaGrid() {
         ))}
       </div>
       {selected && (
-        <ProductModal product={selected} onClose={() => setSelected(null)} />
+        <ProductModal
+          product={selected}
+          onClose={() => setSelected(null)}
+          onBuy={() => {
+            setSelected(null);
+            setShowPayment(true);
+          }}
+        />
+      )}
+      {showPayment && (
+        <PaymentInstructionsModal onClose={() => setShowPayment(false)} />
       )}
     </>
   );
