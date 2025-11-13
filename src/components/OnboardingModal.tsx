@@ -63,7 +63,7 @@ export default function OnboardingModal() {
                 {step === 0 ? (
                     <div className="w-full relative bg-gray-100 flex justify-center items-center">
                         <img
-                            src="/images/newArticles.png"
+                            src="/images/newArticles.jpg"
                             alt="Nuevos Artículos"
                             className="w-full h-auto object-contain"
                         />
