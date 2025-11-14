@@ -49,11 +49,13 @@ export default function Header() {
 
                 {/* Desktop Tienda Button */}
                 <div className="hidden lg:flex items-center gap-4">
+
+                    {/* Botón de contacto */}
                     <Link
-                        href="/tienda"
-                        className="bg-green-700 text-white font-bold px-6 xl:px-8 py-2 xl:py-3 rounded-full shadow-lg text-sm xl:text-base hover:bg-green-800 transition-colors"
+                        href="/contacto"
+                        className="bg-green-700 text-white font-bold px-4 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg ml-2 sm:ml-6 text-sm sm:text-base"
                     >
-                        Tienda
+                        Contacto
                     </Link>
                 </div>
 
@@ -76,16 +78,15 @@ export default function Header() {
                                 key={item.href}
                                 href={item.href}
                                 onClick={() => setMobileMenuOpen(false)}
-                                className={`text-lg font-medium transition-colors ${
-                                    pathname === item.href || pathname.startsWith(item.href + "/")
-                                        ? "text-black font-semibold"
-                                        : "text-gray-500"
-                                }`}
+                                className={`text-lg font-medium transition-colors ${pathname === item.href || pathname.startsWith(item.href + "/")
+                                    ? "text-black font-semibold"
+                                    : "text-gray-500"
+                                    }`}
                             >
                                 {item.label}
                             </Link>
                         ))}
-                        
+
                         {/* Mobile Servicios Dropdown */}
                         <div className="border-t border-gray-200 pt-4">
                             <p className="text-lg font-semibold text-gray-900 mb-3">Servicios</p>
@@ -126,11 +127,10 @@ export default function Header() {
                                 key={item.href}
                                 href={item.href}
                                 onClick={() => setMobileMenuOpen(false)}
-                                className={`text-lg font-medium transition-colors ${
-                                    pathname === item.href || pathname.startsWith(item.href + "/")
-                                        ? "text-black font-semibold"
-                                        : "text-gray-500"
-                                }`}
+                                className={`text-lg font-medium transition-colors ${pathname === item.href || pathname.startsWith(item.href + "/")
+                                    ? "text-black font-semibold"
+                                    : "text-gray-500"
+                                    }`}
                             >
                                 {item.label}
                             </Link>
@@ -138,12 +138,13 @@ export default function Header() {
 
                         {/* Mobile Tienda Button */}
                         <Link
-                            href="/tienda"
+                            href="/contacto"
                             onClick={() => setMobileMenuOpen(false)}
                             className="bg-green-700 text-white font-bold px-8 py-3 rounded-full shadow-lg text-center hover:bg-green-800 transition-colors"
                         >
-                            Tienda
+                            Contacto
                         </Link>
+
                     </nav>
                 </div>
             )}

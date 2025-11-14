@@ -8,7 +8,7 @@ export default function HeaderSocialMedia() {
   return (
     <div className="w-full bg-gray-200" >
       <div className="w-full px-4 sm:px-6 lg:px-12 py-2 flex justify-end items-center space-x-2 sm:space-x-3">
-        
+
         {/* Íconos de redes */}
         <div className="flex items-center space-x-1 sm:space-x-2">
 
@@ -38,18 +38,20 @@ export default function HeaderSocialMedia() {
             aria-label="Instagram"
             className="hover:opacity-80 transition"
           >
-            <IconBrandInstagram size={24} className="sm:w-8 sm:h-8" color="gray"/>
+            <IconBrandInstagram size={24} className="sm:w-8 sm:h-8" color="gray" />
           </a>
 
         </div>
 
-        {/* Botón de contacto */}
+        {/* Botón de tienda */}
+
         <Link
-          href="/contacto"
-          className="bg-green-700 text-white font-bold px-4 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg ml-2 sm:ml-6 text-sm sm:text-base"
+          href="/tienda"
+          className="bg-green-700 text-white font-bold px-6 xl:px-8 py-2 xl:py-3 rounded-full shadow-lg text-sm xl:text-base hover:bg-green-800 transition-colors"
         >
-          Contacto
+          Tienda
         </Link>
+
       </div>
     </div>
   )

@@ -47,7 +47,7 @@ export default function Evento() {
             {/* Imagen */}
             <div className="relative mb-6 sm:mb-8 mt-8 sm:mt-12 rounded-2xl overflow-hidden flex justify-center">
                 <img
-                    src="/images/octagonal.jpg"
+                    src="/images/octagonal.jpeg"
                     alt="LPINO FC Banner Octagonal"
                     className="w-full max-w-4xl object-cover"
                 />

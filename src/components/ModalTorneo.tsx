@@ -181,18 +181,6 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                         </div>
                                     </div>
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(10:00 AM - Cancha 2)</span>
-                                        <div className="flex items-center w-full">
-                                            <span className="flex-1 text-right text-sm sm:text-base font-medium text-gray-700 pr-3">Lpino FC</span>
-                                            <div className="w-16 flex items-center justify-center gap-2">
-                                                <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                                <span className="text-gray-400 font-bold">-</span>
-                                                <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
-                                            </div>
-                                            <span className="flex-1 text-left text-sm sm:text-base font-medium text-gray-700 pl-3">Estrato 0</span>
-                                        </div>
-                                    </div>
-                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
                                         <span className="text-[11px] text-gray-500">(12:00 PM - Cancha 3)</span>
                                         <div className="flex items-center w-full">
                                             <span className="flex-1 text-right text-sm sm:text-base font-medium text-gray-700 pr-3">Cubillos FC</span>
@@ -202,6 +190,18 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                                 <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                             </div>
                                             <span className="flex-1 text-left text-sm sm:text-base font-medium text-gray-700 pl-3">Tramites</span>
+                                        </div>
+                                    </div>
+                                    <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
+                                        <span className="text-[11px] text-gray-500">(04:00 PM - Cancha 4)</span>
+                                        <div className="flex items-center w-full">
+                                            <span className="flex-1 text-right text-sm sm:text-base font-medium text-gray-700 pr-3">Lpino FC</span>
+                                            <div className="w-16 flex items-center justify-center gap-2">
+                                                <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                                <span className="text-gray-400 font-bold">-</span>
+                                                <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                            </div>
+                                            <span className="flex-1 text-left text-sm sm:text-base font-medium text-gray-700 pl-3">Estrato 0</span>
                                         </div>
                                     </div>
                                 </div>

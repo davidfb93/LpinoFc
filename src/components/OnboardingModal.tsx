@@ -63,7 +63,7 @@ export default function OnboardingModal() {
                 {step === 0 ? (
                     <div className="w-full relative bg-gray-100 flex justify-center items-center">
                         <img
-                            src="/images/newArticles.jpg"
+                            src="/images/newArticles.jpeg"
                             alt="Nuevos Artículos"
                             className="w-full h-auto object-contain"
                         />
@@ -83,7 +83,7 @@ export default function OnboardingModal() {
                         {/* Imagen del evento */}
                         <div className="w-full flex justify-center items-center bg-gray-100">
                             <img
-                                src="/images/octagonal.jpg"
+                                src="/images/octagonal.jpeg"
                                 alt="Evento Octagonal"
                                 className="w-full h-auto object-contain"
                             />
