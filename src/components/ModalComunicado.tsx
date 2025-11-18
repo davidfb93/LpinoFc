@@ -42,16 +42,65 @@ export default function ModalComunicado({ isOpen, onClose, title = "Comunicado E
               <br />
               Pago cancha + Arbitraje Fecha 3 (Domingo 22 Nov) por valor de <strong>$ 100,000</strong> debe realizarse a través de Nequi/Daviplata 310-7344350 a más tardar el día Jueves 20 Noviembre y enviar soporte al WhatsApp ‪+61 403976870‬.  ÚNICO MEDIO DE PAGO
             </li>
+            <br />
+            <li>
+              <strong>Información adicional del torneo</strong>
+              <br />
+              <br />
+              <strong>Tabla de goleadores</strong>
+              <br />
+              1. Juan Esteban Corrales - 3⚽
+              <br />
+              2. Juan Carlos Santamaria - 3⚽
+              <br />
+              3. Jako Osorio - 2⚽
+              <br />
+              4. juan J. Martinez - 2⚽
+              <br />
+              5. Jader Gongora - 2⚽
+              <br />
+              6. Christian Pinzon - 2⚽
+              <br />
+              <br />
+              <strong>Juego Limpio</strong>
+              <br />
+              ⭐️ -1
+              <br />
+              🚨- 3
+              <br />
+              <br />
+              <strong>Tabla de puntos juego limpio</strong>
+              <br />
+              1. Elite FC 96/100 
+              <br />
+              2. Estrato 0 FC 94/100
+              <br />
+              3. Armenia Unid 93/100
+              <br />
+              4. Lpino FC 91/100
+              <br />
+              5. Trámites FC 90/100
+              <br />
+              6. Cubillos FC 87/100
+              <br />
+              <br />
+              <strong>Valla menos vencida</strong>
+              <br />
+              1. Moisés Ortiz Gómez 
+              <br />
+              2. Fernando Tabares Noreña
+            </li>
+            <br />
             <li>
               <strong>Jugadores amonestados en la segunda fecha</strong>
               <br />
-              A todos los equipos participantes y en disputa de premiacion o pase a la final del torneo, recuerden que deben estar a paz y salvo con pago de tarjetas (amarillas y rojas). Independiente de que los jugadores amonestados no se hagan cargo el equipo pero se es responsable como institución ante el torneo .  Por tal motivo a continuación  se solicita el pago total de las amonestaciones por cada equipo. 
+              A todos los equipos participantes y en disputa de premiacion o pase a la final del torneo, recuerden que deben estar a paz y salvo con pago de tarjetas (amarillas y rojas). Independiente de que los jugadores amonestados no se hagan cargo, el equipo es responsable como institución ante el torneo . Por tal motivo a continuación se solicita el pago total de las amonestaciones por cada equipo.
               <br />
               <br />
-              Los siguientes jugadores y/o equipos deben realizar el pago de las tarjetas correspondientes a la segunda fecha, a más tardar Sábado 21 noviembre, de lo contrario, los jugadores a quienes se les mostró la tarjeta, no podrán jugar en la Fecha 3, so pena que si un jugador participa sin antes haber cancelado la tarjeta, el equipo pierde automáticamente los puntos en disputa.
+              Los siguientes equipos deben realizar el pago de las tarjetas de sus jugadores amonestados correspondientes a la segunda fecha, a más tardar Sábado 21 noviembre, de lo contrario, los equipos que al cierre del día sábado no se hayan puesto a paz y salvo, no podrán disputar los puntos de la fecha 3. Acarreando así la eliminación automática del torneo 🏟️.
               <br />
               <br />
-              Los jugadores  con tarjeta roja, tienen 1 (una) fecha de suspensión; y podrán jugar una vez cancelada la misma, en la fecha correspondiente a la final, en caso de que su equipo llegue a esta.
+              Los jugadores con tarjeta roja, tienen 1 (una) fecha de suspensión; y podrán jugar una vez cancelada la misma, en la fecha correspondiente a la final, en caso de que su equipo llegue a esta.
               <br />
               <br />
               <strong>💰Medios de pago</strong>

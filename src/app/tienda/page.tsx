@@ -22,6 +22,7 @@ const products: Product[] = [
     price: '99,000 COP',
     image: '/images/products/p1.jpg',
     sizes: ['S', 'M', 'L', 'XL'],
+    soldOut: true,
     images: ['/images/products/p1.jpg', '/images/products/p1.2.jpg'],
   },
   {

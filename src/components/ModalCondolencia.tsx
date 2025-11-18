@@ -56,7 +56,9 @@ export default function ModalCondolencia({
             className="w-full max-w-2xl h-auto object-contain rounded-xl border mb-2 shadow"
           />
           <p className="text-gray-700 text-base text-left w-full">
-            Fundación LPINO FC y comité organizador, junto al equipo Armenia United FC, expresan sus más sinceros sentimientos de condolencia por la pérdida familiar de los jugadores <span className="font-semibold">{jugadores}</span> y deseamos que su amado padre <span className="font-semibold">{difunto}</span> descanse en la gloria eterna de nuestro señor Jesús Cristo.
+            Fundación LPINO FC y comité organizador, junto al equipo Armenia United FC, expresan sus más sinceros sentimientos de condolencia por la pérdida familiar de los jugadores 
+            <br />
+            <span className="font-semibold">{jugadores}</span> y deseamos que su amado padre <span className="font-semibold">{difunto}</span> descanse en la gloria eterna de nuestro señor Jesús Cristo.
           </p>
         </div>
         <div className="p-4 border-t border-gray-200 flex justify-end">

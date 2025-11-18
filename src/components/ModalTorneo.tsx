@@ -49,27 +49,14 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
         };
     }, [isOpen, isComunicadoOpen, onClose]);
 
-    // Apertura automática: mostrar condolencia una sola vez (persistente) al abrir; si ya se mostró, evaluar mostrar comunicado (no suprimido hoy)
+    // Apertura automática: siempre mostrar condolencia al abrir "Seguimiento torneo"
     useEffect(() => {
         if (isOpen) {
-            try {
-                const shown = localStorage.getItem('lpino_condolencia_seen') === '1';
-                if (!shown) {
-                    setIsCondolenciaOpen(true);
-                    localStorage.setItem('lpino_condolencia_seen', '1');
-                    setIsComunicadoOpen(false);
-                    return;
-                }
-                const today = new Date().toISOString().slice(0, 10);
-                const saved = localStorage.getItem('lpino_comunicado_suppress_date');
-                setIsComunicadoOpen(saved === today ? false : true);
-            } catch {
-                setIsCondolenciaOpen(true);
-                try { localStorage.setItem('lpino_condolencia_seen', '1'); } catch {}
-            }
-        } else {
+            setIsCondolenciaOpen(true);
             setIsComunicadoOpen(false);
+        } else {
             setIsCondolenciaOpen(false);
+            setIsComunicadoOpen(false);
         }
     }, [isOpen]);
 
@@ -414,7 +401,13 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                 isOpen={isCondolenciaOpen}
                 onClose={() => {
                     setIsCondolenciaOpen(false);
-                    setIsComunicadoOpen(true);
+                    try {
+                        const today = new Date().toISOString().slice(0, 10);
+                        const saved = localStorage.getItem('lpino_comunicado_suppress_date');
+                        setIsComunicadoOpen(saved === today ? false : true);
+                    } catch {
+                        setIsComunicadoOpen(true);
+                    }
                 }}
                 jugadores="J. Jader Gongora y Jhon Gongora"
                 difunto="Isidro Gongora"
