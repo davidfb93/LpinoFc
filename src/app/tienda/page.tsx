@@ -12,6 +12,8 @@ interface Product {
   isSale?: boolean;
   sizes?: string[];
   images?: string[];
+  soldOut?: boolean;
+  soldOutSizes?: string[];
 }
 
 const products: Product[] = [
@@ -28,6 +30,7 @@ const products: Product[] = [
     oldPrice: '120,000 COP',
     image: '/images/products/p2.jpg',
     isSale: true,
+    soldOutSizes: ['M'],
     sizes: ['XS', 'S', 'M'],
     images: ['/images/products/p2.jpg', '/images/products/p2.2.jpg'],
   },
@@ -44,6 +47,7 @@ const products: Product[] = [
     oldPrice: '450,000 COP',
     image: '/images/products/p4.jpg',
     isSale: true,
+    soldOut: true,
     sizes: ['US 10'],
     images: ['/images/products/p4.jpg', '/images/products/p4.2.jpg', '/images/products/p4.3.jpg', '/images/products/p4.4.jpg'],
   },
@@ -53,6 +57,7 @@ const products: Product[] = [
     oldPrice: '400,000 COP',
     image: '/images/products/p5.jpg',
     isSale: true,
+    soldOut: true,
     sizes: ['US 9.5'],
     images: ['/images/products/p5.jpg', '/images/products/p5.2.jpg', '/images/products/p5.3.jpg', '/images/products/p5.4.jpg'],
   },
@@ -62,6 +67,7 @@ const products: Product[] = [
     oldPrice: '60,000 COP',
     image: '/images/products/p6.jpg',
     isSale: true,
+    soldOut: true,
     sizes: ['Unica'],
     images: ['/images/products/p6.jpg'],
   },
@@ -76,6 +82,9 @@ function ProductModal({ product, onClose, onBuy }: { product: Product; onClose: 
     : DEFAULT_SIZES;
   const gallery = product.images && product.images.length > 0 ? product.images : [product.image];
   const [current, setCurrent] = useState(0);
+  const soldOutSizes = product.soldOutSizes ?? [];
+  const isProductSoldOut = !!product.soldOut;
+  const isSelectedSizeSoldOut = selectedSize ? soldOutSizes.includes(selectedSize) : false;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -110,26 +119,43 @@ function ProductModal({ product, onClose, onBuy }: { product: Product; onClose: 
                 <span className="text-sm text-gray-600">Talla</span>
               </div>
               <div className="flex flex-wrap gap-2">
-                {sizes.map((s) => (
-                  <button
-                    key={s}
-                    onClick={() => setSelectedSize(s)}
-                    className={`px-3 py-1 rounded-full text-sm border transition ${selectedSize === s ? 'bg-green-600 text-white border-green-600' : 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200'}`}
-                  >
-                    {s}
-                  </button>
-                ))}
+                {sizes.map((s) => {
+                  const sizeSoldOut = soldOutSizes.includes(s) || isProductSoldOut;
+                  const isActive = selectedSize === s;
+                  const base = 'px-3 py-1 rounded-full text-sm border transition';
+                  const active = 'bg-green-600 text-white border-green-600';
+                  const normal = 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200';
+                  const disabled = 'bg-gray-100 text-gray-400 border-gray-200 line-through cursor-not-allowed';
+                  return (
+                    <button
+                      key={s}
+                      onClick={() => { if (!sizeSoldOut) setSelectedSize(s); }}
+                      disabled={sizeSoldOut}
+                      className={`${base} ${sizeSoldOut ? disabled : (isActive ? active : normal)}`}
+                      title={sizeSoldOut ? 'Agotado' : 'Disponible'}
+                    >
+                      {s}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
             <div>
               <button
                 type="button"
-                className="mt-4 w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold py-3 rounded-xl shadow hover:opacity-90 transition"
-                onClick={onBuy}
+                className={`mt-4 w-full inline-flex items-center justify-center gap-2 font-semibold py-3 rounded-xl shadow transition ${
+                  (isProductSoldOut || !selectedSize || isSelectedSizeSoldOut)
+                    ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white hover:opacity-90'
+                }`}
+                disabled={isProductSoldOut || !selectedSize || isSelectedSizeSoldOut}
+                onClick={() => {
+                  if (!(isProductSoldOut || !selectedSize || isSelectedSizeSoldOut)) onBuy();
+                }}
               >
                 <ShoppingCartIcon className="w-5 h-5" />
-                Comprar producto
+                {isProductSoldOut ? 'Producto agotado' : isSelectedSizeSoldOut ? 'Talla agotada' : 'Comprar producto'}
               </button>
             </div>
 
@@ -179,6 +205,8 @@ function ProductCard({ product, onOpen }: { product: Product; onOpen: (p: Produc
   const displaySizes = (product.sizes && product.sizes.length > 0
     ? product.sizes.filter(s => s && s.trim().length > 0)
     : DEFAULT_SIZES);
+  const soldOut = !!product.soldOut;
+  const soldOutSizes = product.soldOutSizes ?? [];
 
   return (
     <div
@@ -187,23 +215,41 @@ function ProductCard({ product, onOpen }: { product: Product; onOpen: (p: Produc
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {product.isSale && (
-        <span className="absolute top-4 right-4 bg-pink-100 text-pink-600 text-xs font-semibold px-2 py-1 rounded">Oferta</span>
+      {soldOut ? (
+        <span className="absolute top-4 left-4 bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded">Agotado</span>
+      ) : (
+        product.isSale && (
+          <span className="absolute top-4 right-4 bg-pink-100 text-pink-600 text-xs font-semibold px-2 py-1 rounded">Oferta</span>
+        )
       )}
       <div className="relative flex flex-col items-center justify-center w-full">
-        <button onClick={() => onOpen(product)} className="focus:outline-none">
+        <button
+          onClick={() => { if (!soldOut) onOpen(product); }}
+          disabled={soldOut}
+          aria-disabled={soldOut}
+          title={soldOut ? 'Producto agotado' : 'Ver producto'}
+          className={`focus:outline-none ${soldOut ? 'cursor-not-allowed' : ''}`}
+        >
           <img
             src={product.image}
             alt={product.name}
-            className={"w-48 h-48 sm:w-64 sm:h-64 object-contain mb-2 rounded-xl border border-white transition-all duration-700 ease-out cursor-pointer"}
-            style={hovered ? { transform: 'scale(0.85)', opacity: 0.8 } : {}}
+            className={`${soldOut ? 'w-44 h-44 sm:w-60 sm:h-60 mt-4' : 'w-48 h-48 sm:w-64 sm:h-64'} object-contain mb-2 rounded-xl border border-white transition-all duration-700 ease-out cursor-pointer ${soldOut ? 'grayscale opacity-70' : ''}`}
+            style={hovered ? { transform: 'scale(0.85)', opacity: soldOut ? 0.7 : 0.8 } : {}}
           />
         </button>
         <div className="w-full flex items-center justify-center h-10 mt-4 mb-2">
           <div className={`flex flex-wrap gap-2 justify-center transition-opacity duration-300 opacity-100 md:opacity-0 ${hovered ? 'md:opacity-100' : ''}`}>
-            {displaySizes.map(size => (
-              <span key={size} className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold border border-gray-200 shadow-sm">{size}</span>
-            ))}
+            {displaySizes.map(size => {
+              const sizeSoldOut = soldOut || soldOutSizes.includes(size);
+              const classes = sizeSoldOut
+                ? 'bg-gray-100 text-gray-400 px-3 py-1 rounded-full text-sm font-semibold border border-gray-200 line-through shadow-sm'
+                : 'bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold border border-gray-200 shadow-sm';
+              return (
+                <span key={size} className={classes} title={sizeSoldOut ? 'Agotado' : 'Disponible'}>
+                  {size}
+                </span>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -100,32 +100,32 @@ export const slides = [
 
 export const slidesGroupA = [
   {
-    src: '/images/amistosos.jpg',
+    src: '/images/teams/LpinoFC.jpeg',
     alt: 'Foto 1',
     title: 'LPino FC',
   },
   {
-    src: '/images/teams/Armenia-united.jpg',
+    src: '/images/teams/ArmeniaUnited.jpeg',
     alt: 'Foto 2',
     title: 'Armenia United',
   },
   {
-    src: '/images/teams/Team1.jpg',
+    src: '/images/teams/CubillosFC.jpeg',
     alt: 'Foto 3',
     title: 'Cubillos FC',
   },
   {
-    src: '/images/teams/Team2.jpg',
+    src: '/images/teams/Tramites.jpeg',
     alt: 'Foto 4',
     title: 'Tramites',
   },
     {
-    src: '/images/teams/Team3.jpg',
+    src: '/images/teams/EstratoCero.jpeg',
     alt: 'Foto 4',
     title: 'Estrato 0',
   },
     {
-    src: '/images/teams/Team5.jpeg',
+    src: '/images/teams/EliteFC.jpeg',
     alt: 'Foto 4',
     title: 'Elite FC',
   },

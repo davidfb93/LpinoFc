@@ -7,6 +7,7 @@ import Collage, { slidesGroupA } from "./Collage";
 import TablaPosiciones, { EquipoData } from "./TablaPosiciones";
 import PdfModal from "./PdfModal";
 import ModalComunicado from "./ModalComunicado";
+import ModalCondolencia from "./ModalCondolencia";
 
 interface ModalTorneoProps {
     isOpen: boolean;
@@ -16,17 +17,18 @@ interface ModalTorneoProps {
 // Datos de ejemplo para la tabla de posiciones
 // ["✓", "✗", "-"]
 const grupoAData: EquipoData[] = [
-    { pos: 1, equipo: "Estrato 0", pj: 1, g: 1, e: 0, p: 0, gf: 4, gc: 1, dg: 3, pts: 3, ta: 3, tr: 0, ultimos: ["✓", "", ""] },
-    { pos: 2, equipo: "Cubillos FC", pj: 1, g: 1, e: 0, p: 0, gf: 2, gc: 0, dg: 2, pts: 3, ta: 1, tr: 1, ultimos: ["✓", "", ""] },
-    { pos: 3, equipo: "Lpino FC", pj: 1, g: 1, e: 0, p: 0, gf: 2, gc: 1, dg: 1, pts: 3, ta: 4, tr: 1, ultimos: ["✓", "", ""] },
-    { pos: 4, equipo: "Tramites", pj: 1, g: 0, e: 0, p: 1, gf: 1, gc: 2, dg: -1, pts: 0, ta: 1, tr: 0, ultimos: ["✗", "", ""] },
-    { pos: 5, equipo: "Armenia United", pj: 1, g: 0, e: 0, p: 1, gf: 0, gc: 2, dg: -2, pts: 0, ta: 4, tr: 0, ultimos: ["✗", "", ""] },
-    { pos: 6, equipo: "Elite FC", pj: 1, g: 0, e: 0, p: 1, gf: 1, gc: 4, dg: -3, pts: 0, ta: 3, tr: 0, ultimos: ["✗", "", ""] },
+    { pos: 1, equipo: "Estrato 0",      pj: 2, g: 2, e: 0, p: 0, gf: 6, gc: 1, dg: 5, pts: 6,    ta: 3, tr: 1, ultimos: ["✓", "✓", ""] },
+    { pos: 2, equipo: "Cubillos FC",    pj: 2, g: 2, e: 0, p: 0, gf: 5, gc: 1, dg: 4, pts: 6,    ta: 4, tr: 3, ultimos: ["✓", "✓", ""] },
+    { pos: 3, equipo: "Armenia United", pj: 2, g: 1, e: 0, p: 1, gf: 11, gc: 4, dg: 7, pts: 3,   ta: 7, tr: 0, ultimos: ["✗", "✓", ""] },
+    { pos: 4, equipo: "Lpino FC",       pj: 2, g: 1, e: 0, p: 1, gf: 2, gc: 3, dg: -1, pts: 3,   ta: 7, tr: 1, ultimos: ["✓", "✗", ""] },
+    { pos: 5, equipo: "Tramites",       pj: 2, g: 0, e: 0, p: 2, gf: 2, gc: 5, dg: -3, pts: 0,   ta: 3, tr: 2, ultimos: ["✗", "✗", ""] },
+    { pos: 6, equipo: "Elite FC",       pj: 2, g: 0, e: 0, p: 2, gf: 3, gc: 15, dg: -12, pts: 0, ta: 4, tr: 0, ultimos: ["✗", "✗", ""] },
 ];
 
 export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
     const [isPdfOpen, setIsPdfOpen] = useState(false);
     const [isComunicadoOpen, setIsComunicadoOpen] = useState(false);
+    const [isCondolenciaOpen, setIsCondolenciaOpen] = useState(false);
     // Cerrar modal con tecla ESC
     useEffect(() => {
         const handleEsc = (event: KeyboardEvent) => {
@@ -46,6 +48,13 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
             window.removeEventListener('keydown', handleEsc);
         };
     }, [isOpen, isComunicadoOpen, onClose]);
+
+    // Mostrar condolencia al cerrar comunicado
+    useEffect(() => {
+        if (!isComunicadoOpen && isOpen) {
+            setIsCondolenciaOpen(true);
+        }
+    }, [isComunicadoOpen, isOpen]);
 
     // Abrir el comunicado automáticamente cuando se abre este modal (si no fue suprimido hoy)
     useEffect(() => {
@@ -173,9 +182,9 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                         <div className="flex items-center w-full">
                                             <span className="flex-1 text-right text-sm sm:text-base font-medium text-gray-700 pr-3">Elite FC</span>
                                             <div className="w-16 flex items-center justify-center gap-2">
-                                                <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                                <span className="text-lg sm:text-xl font-bold text-green-600">11</span>
                                                 <span className="text-gray-400 font-bold">-</span>
-                                                <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                                <span className="text-lg sm:text-xl font-bold text-green-600">2</span>
                                             </div>
                                             <span className="flex-1 text-left text-sm sm:text-base font-medium text-gray-700 pl-3">Armenia United</span>
                                         </div>
@@ -185,9 +194,9 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                         <div className="flex items-center w-full">
                                             <span className="flex-1 text-right text-sm sm:text-base font-medium text-gray-700 pr-3">Cubillos FC</span>
                                             <div className="w-16 flex items-center justify-center gap-2">
-                                                <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                                <span className="text-lg sm:text-xl font-bold text-green-600">3</span>
                                                 <span className="text-gray-400 font-bold">-</span>
-                                                <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                                <span className="text-lg sm:text-xl font-bold text-green-600">1</span>
                                             </div>
                                             <span className="flex-1 text-left text-sm sm:text-base font-medium text-gray-700 pl-3">Tramites</span>
                                         </div>
@@ -199,7 +208,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                             <div className="w-16 flex items-center justify-center gap-2">
                                                 <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
                                                 <span className="text-gray-400 font-bold">-</span>
-                                                <span className="text-lg sm:text-xl font-bold text-green-600">0</span>
+                                                <span className="text-lg sm:text-xl font-bold text-green-600">2</span>
                                             </div>
                                             <span className="flex-1 text-left text-sm sm:text-base font-medium text-gray-700 pl-3">Estrato 0</span>
                                         </div>
@@ -395,7 +404,16 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
             </div>
             <ModalComunicado
                 isOpen={isComunicadoOpen}
-                onClose={() => setIsComunicadoOpen(false)}
+                onClose={() => {
+                    setIsComunicadoOpen(false);
+                    setIsCondolenciaOpen(true);
+                }}
+            />
+            <ModalCondolencia
+                isOpen={isCondolenciaOpen}
+                onClose={() => setIsCondolenciaOpen(false)}
+                jugadores="J. Jader Gongora y Jhon Gongora"
+                difunto="Isidro Gongora"
             />
             <PdfModal
                 isOpen={isPdfOpen}

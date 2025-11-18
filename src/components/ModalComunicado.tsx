@@ -9,7 +9,7 @@ interface ModalComunicadoProps {
   title?: string;
 }
 
-export default function ModalComunicado({ isOpen, onClose, title = "Comunicado Extraordinario Fecha 1" }: ModalComunicadoProps) {
+export default function ModalComunicado({ isOpen, onClose, title = "Comunicado Extraordinario Fecha 2" }: ModalComunicadoProps) {
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -40,15 +40,18 @@ export default function ModalComunicado({ isOpen, onClose, title = "Comunicado E
             <li>
               <strong>Pago de cancha y arbitraje</strong>
               <br />
-              Pago cancha + Arbitraje Fecha 2 (Domingo 16 Nov) por valor de <strong>$ 100,000</strong> debe realizarse a través de Nequi/Daviplata 310-7344350 a más tardar el día Jueves 13 Noviembre y enviar soporte al WhatsApp ‪+61 403976870‬.  ÚNICO MEDIO DE PAGO
+              Pago cancha + Arbitraje Fecha 3 (Domingo 22 Nov) por valor de <strong>$ 100,000</strong> debe realizarse a través de Nequi/Daviplata 310-7344350 a más tardar el día Jueves 20 Noviembre y enviar soporte al WhatsApp ‪+61 403976870‬.  ÚNICO MEDIO DE PAGO
             </li>
             <li>
-              <strong>Jugadores amonestados en la primera fecha</strong>
+              <strong>Jugadores amonestados en la segunda fecha</strong>
               <br />
-              Los siguientes jugadores y/o equipos deben realizar el pago de las tarjetas correspondientes a la primera fecha, a más tardar Sábado 15 noviembre, de lo contrario, los jugadores a quienes se les mostró la tarjeta, no podrán jugar en la Fecha 2, so pena que si un jugador participa sin antes haber cancelado la tarjeta, el equipo pierde automáticamente los puntos en disputa.
+              A todos los equipos participantes y en disputa de premiacion o pase a la final del torneo, recuerden que deben estar a paz y salvo con pago de tarjetas (amarillas y rojas). Independiente de que los jugadores amonestados no se hagan cargo el equipo pero se es responsable como institución ante el torneo .  Por tal motivo a continuación  se solicita el pago total de las amonestaciones por cada equipo. 
               <br />
               <br />
-              Los jugadores  con tarjeta roja, tienen 1 (una) fecha de suspensión; y podrán jugar una vez cancelada la misma, en la fecha 3.
+              Los siguientes jugadores y/o equipos deben realizar el pago de las tarjetas correspondientes a la segunda fecha, a más tardar Sábado 21 noviembre, de lo contrario, los jugadores a quienes se les mostró la tarjeta, no podrán jugar en la Fecha 3, so pena que si un jugador participa sin antes haber cancelado la tarjeta, el equipo pierde automáticamente los puntos en disputa.
+              <br />
+              <br />
+              Los jugadores  con tarjeta roja, tienen 1 (una) fecha de suspensión; y podrán jugar una vez cancelada la misma, en la fecha correspondiente a la final, en caso de que su equipo llegue a esta.
               <br />
               <br />
               <strong>💰Medios de pago</strong>
@@ -70,54 +73,64 @@ export default function ModalComunicado({ isOpen, onClose, title = "Comunicado E
               <br />
               Alexander Murillo ⭐
               <br />
-              Daniel Arias O. ⭐
+              Polo Enríquez ⭐
               <br />
-              Jhon E. Sánchez⭐
+              Juan José Zorrila ⭐
               <br />
-              Juan C. SantaMaría ⭐
+              <strong>Total a pagar Armenia Unid: $ 15,000</strong>
               <br />
               <br />
               <strong>Tarjetas  Cubillos FC</strong>
               <br />
-              Eduardo Y. Ortiz⭐
+              Camilo A. Piedrahita ⭐
               <br />
-              Árnol Gómez C 🚨
+              Kevin A. Olarte ⭐
+              <br />
+              Jonathan Bedoya ⭐
+              <br />
+              Carlos Alzate 🚨
+              <br />
+              Edwin Estrada  🚨
+              <br />
+              <strong>Total a pagar Cubillos FC: $ 35,000</strong>
               <br />
               <br />
               <strong>Tarjetas  Lpino FC</strong>
               <br />
-              Faber Tamayo ⭐
+              Omar J. Carabali ⭐
               <br />
-              Alejandro Salgado⭐
+              Albeiro Rivera⭐
               <br />
-              Cristian Montoya ⭐
+              Juan Pablo Ramirez ⭐
               <br />
-              Jorge Mario Santa ⭐
-              <br />
-              David Díaz R. 🚨
+              <strong>Total a pagar Lpino FC: $ 15,000</strong>
               <br />
               <br />
               <strong>Tarjetas Trámites</strong>
               <br />
-              William Muñoz ⭐
+              Yeison Casallas ⭐
+              <br />
+              Juan David Trujillo ⭐
+              <br />
+              Brian A. García 🚨
+              <br />
+              Andrés D. Guzmán 🚨
+              <br />
+              <strong>Total a pagar Trámites: $ 30,000</strong>
               <br />
               <br />
               <strong>Tarjetas  Elite FC</strong>
               <br />
-              Carlos Francisco Ninco ⭐
+              Alexander castañeda ⭐
               <br />
-              Jorge Hincapié ⭐
-              <br />
-              Andrés D. Hincapié ⭐
+              <strong>Total a pagar Elite FC: $ 5,000</strong>
               <br />
               <br />
               <strong>Tarjetas Estrato 0  </strong>
               <br />
-              Jako Osorio ⭐
+              Yako Osorio 🚨
               <br />
-              Germán D. Jaramillo ⭐
-              <br />
-              Michael S. Pinzón ⭐
+              <strong>Total a pagar Estrato 0: $ 10,000</strong>
               <br />
               <br />
             </li>
