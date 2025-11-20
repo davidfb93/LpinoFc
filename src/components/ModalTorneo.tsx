@@ -210,7 +210,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                 <h4 className="text-sm sm:text-base font-bold text-green-900 mb-3 text-center">Fecha 3 - 23 de Noviembre</h4>
                                 <div className="space-y-2">
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
+                                        <span className="text-[11px] text-gray-500">(12:00 PM - Cancha por confirmar)</span>
                                         <div className="flex items-center w-full">
                                             <span className="flex-1 text-right text-sm sm:text-base font-medium text-gray-700 pr-3">Lpino FC</span>
                                             <div className="w-16 flex items-center justify-center gap-2">
@@ -222,7 +222,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                         </div>
                                     </div>
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
+                                        <span className="text-[11px] text-gray-500">(02:00 PM - Cancha por confirmar)</span>
                                         <div className="flex items-center w-full">
                                             <span className="flex-1 text-right text-sm sm:text-base font-medium text-gray-700 pr-3">Cubillos FC</span>
                                             <div className="w-16 flex items-center justify-center gap-2">
@@ -234,7 +234,7 @@ export default function ModalTorneo({ isOpen, onClose }: ModalTorneoProps) {
                                         </div>
                                     </div>
                                     <div className="bg-white border border-green-200 rounded-md p-3 flex flex-col items-center gap-2">
-                                        <span className="text-[11px] text-gray-500">(Horario y cancha por confirmar)</span>
+                                        <span className="text-[11px] text-gray-500">(04:00 PM - Cancha por confirmar)</span>
                                         <div className="flex items-center w-full">
                                             <span className="flex-1 text-right text-sm sm:text-base font-medium text-gray-700 pr-3">Tramites</span>
                                             <div className="w-16 flex items-center justify-center gap-2">
